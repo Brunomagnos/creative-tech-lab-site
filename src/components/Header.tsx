@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Logo from "./Logo";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -13,9 +14,8 @@ const Header = () => {
     <header className="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm">
       <div className="container mx-auto flex items-center justify-between py-4">
         <div className="flex items-center">
-          <a href="#" className="text-2xl font-bold flex items-center gap-2">
-            <span className="text-mk-orange">MK</span>
-            <span className="text-mk-black">Creative Lab</span>
+          <a href="#" className="flex items-center gap-2">
+            <Logo variant="full" colorMode="color" size="md" />
           </a>
         </div>
 

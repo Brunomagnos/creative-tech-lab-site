@@ -1,5 +1,6 @@
 
 import { ArrowUp, Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
+import Logo from "./Logo";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -14,9 +15,8 @@ const Footer = () => {
       <div className="container">
         <div className="flex flex-col md:flex-row justify-between mb-12 gap-8">
           <div className="max-w-md">
-            <a href="#" className="text-3xl font-bold flex items-center gap-2 mb-4">
-              <span className="text-mk-orange">MK</span>
-              <span>Creative Lab</span>
+            <a href="#" className="inline-block mb-4">
+              <Logo variant="full" colorMode="white" size="lg" />
             </a>
             <p className="text-gray-400 mb-6">
               Somos um laboratório criativo que integra arte e tecnologia para entregar 
