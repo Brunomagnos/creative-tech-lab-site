@@ -1,5 +1,6 @@
 
-import { Film, BarChart, Settings, Cube } from "lucide-react";
+import { Film, BarChart, Settings, ArrowRight } from "lucide-react";
+import { Package } from "lucide-react"; // Replacing Cube with Package which is available
 
 const Services = () => {
   const services = [
@@ -47,7 +48,7 @@ const Services = () => {
     },
     {
       id: 4,
-      icon: <Cube className="h-10 w-10 text-mk-orange" />,
+      icon: <Package className="h-10 w-10 text-mk-orange" />, // Changed from Cube to Package
       title: "Impressão 3D",
       description: "Transforme ideias em objetos reais com nossa tecnologia de ponta.",
       items: [
