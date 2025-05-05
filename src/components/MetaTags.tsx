@@ -1,6 +1,5 @@
 
-import React from "react";
-import { Helmet } from "react-helmet";
+import React, { useEffect } from "react";
 
 interface MetaTagsProps {
   title?: string;
@@ -17,30 +16,82 @@ const MetaTags = ({
   ogImage = "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=800&h=450",
   url = "https://www.mkcreativelab.com.br"
 }: MetaTagsProps) => {
-  return (
-    <Helmet>
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
-      
-      {/* Open Graph / Facebook */}
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={url} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={ogImage} />
+  
+  useEffect(() => {
+    // Update document title
+    document.title = title;
+    
+    // Get all meta tags
+    const metaTags = document.getElementsByTagName('meta');
+    
+    // Update or create meta description
+    let descriptionTag = document.querySelector('meta[name="description"]');
+    if (descriptionTag) {
+      descriptionTag.setAttribute('content', description);
+    } else {
+      descriptionTag = document.createElement('meta');
+      descriptionTag.setAttribute('name', 'description');
+      descriptionTag.setAttribute('content', description);
+      document.head.appendChild(descriptionTag);
+    }
+    
+    // Update or create meta keywords
+    let keywordsTag = document.querySelector('meta[name="keywords"]');
+    if (keywordsTag) {
+      keywordsTag.setAttribute('content', keywords);
+    } else {
+      keywordsTag = document.createElement('meta');
+      keywordsTag.setAttribute('name', 'keywords');
+      keywordsTag.setAttribute('content', keywords);
+      document.head.appendChild(keywordsTag);
+    }
+    
+    // Open Graph tags
+    const ogTags = {
+      'og:type': 'website',
+      'og:url': url,
+      'og:title': title,
+      'og:description': description,
+      'og:image': ogImage,
+      'twitter:card': 'summary_large_image',
+      'twitter:url': url,
+      'twitter:title': title,
+      'twitter:description': description,
+      'twitter:image': ogImage
+    };
+    
+    // Update Open Graph and Twitter tags
+    Object.entries(ogTags).forEach(([property, content]) => {
+      let metaTag = document.querySelector(`meta[property="${property}"]`);
+      if (metaTag) {
+        metaTag.setAttribute('content', content);
+      } else {
+        metaTag = document.createElement('meta');
+        metaTag.setAttribute('property', property);
+        metaTag.setAttribute('content', content);
+        document.head.appendChild(metaTag);
+      }
+    });
+    
+    // Update canonical link
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+      canonicalLink.setAttribute('href', url);
+    } else {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      canonicalLink.setAttribute('href', url);
+      document.head.appendChild(canonicalLink);
+    }
+    
+    // Cleanup function to reset title when component unmounts
+    return () => {
+      // We don't reset other meta tags as they might be needed across the site
+    };
+  }, [title, description, keywords, ogImage, url]);
 
-      {/* Twitter */}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={url} />
-      <meta property="twitter:title" content={title} />
-      <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={ogImage} />
-      
-      {/* Canonical URL */}
-      <link rel="canonical" href={url} />
-    </Helmet>
-  );
+  // This component doesn't render anything to the DOM
+  return null;
 };
 
 export default MetaTags;
