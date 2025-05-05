@@ -1,4 +1,6 @@
 
+import { AspectRatio } from "./ui/aspect-ratio";
+
 const About = () => {
   return (
     <section id="sobre" className="section-container bg-mk-black text-white">
@@ -32,14 +34,14 @@ const About = () => {
                 </p>
               </div>
               
-              <div className="border-l-4 border-mk-orange pl-4">
+              <div className="border-l-4 border-mk-orange pl-4 mt-6">
                 <h3 className="text-xl font-bold">Visão</h3>
                 <p className="text-gray-300">
                   Ser referência em soluções criativas e tecnológicas que realmente impulsionam negócios e causam impacto positivo.
                 </p>
               </div>
               
-              <div className="border-l-4 border-mk-orange pl-4">
+              <div className="border-l-4 border-mk-orange pl-4 mt-6">
                 <h3 className="text-xl font-bold">Valores</h3>
                 <p className="text-gray-300">
                   Excelência, inovação, compromisso com resultados, transparência e aprendizado contínuo.
@@ -49,20 +51,40 @@ const About = () => {
           </div>
           
           <div className="relative h-full animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <div className="aspect-square bg-mk-gray-dark rounded-lg overflow-hidden relative shadow-2xl">
-              <img 
-                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80" 
-                alt="MK Creative Lab Team"
-                className="w-full h-full object-cover opacity-90"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="col-span-2">
+                <AspectRatio ratio={16/9} className="bg-mk-gray-dark rounded-lg overflow-hidden shadow-2xl">
+                  <img 
+                    src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&q=80&w=800" 
+                    alt="Equipamento de tecnologia MK Creative Lab"
+                    className="w-full h-full object-cover"
+                  />
+                </AspectRatio>
+              </div>
+              
+              <div>
+                <AspectRatio ratio={1/1} className="bg-mk-gray-dark rounded-lg overflow-hidden shadow-xl">
+                  <img 
+                    src="https://images.unsplash.com/photo-1533228876829-65c94e7b5025?auto=format&fit=crop&q=80&w=400" 
+                    alt="Filmagem profissional"
+                    className="w-full h-full object-cover"
+                  />
+                </AspectRatio>
+              </div>
+              
+              <div>
+                <AspectRatio ratio={1/1} className="bg-mk-orange rounded-lg overflow-hidden shadow-xl">
+                  <img 
+                    src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=400" 
+                    alt="Tecnologia de impressão 3D"
+                    className="w-full h-full object-cover mix-blend-multiply"
+                  />
+                </AspectRatio>
+              </div>
             </div>
-            <div className="absolute -bottom-10 -left-10 w-3/5 aspect-video bg-mk-orange rounded-lg shadow-xl">
-              <img 
-                src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80" 
-                alt="MK Creative Technology"
-                className="w-full h-full object-cover mix-blend-multiply"
-              />
+
+            <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-mk-orange rounded-full flex items-center justify-center shadow-lg z-10">
+              <span className="text-white text-xl font-bold">MK</span>
             </div>
           </div>
         </div>

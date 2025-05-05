@@ -1,6 +1,5 @@
 
-import { Film, BarChart, Settings, ArrowRight } from "lucide-react";
-import { Package } from "lucide-react"; // Replacing Cube with Package which is available
+import { Film, BarChart, Settings, Package, ArrowRight } from "lucide-react";
 
 const Services = () => {
   const services = [
@@ -16,7 +15,8 @@ const Services = () => {
         "Ensaios Fotográficos",
         "Vídeos para Imobiliárias",
         "Clipes Musicais"
-      ]
+      ],
+      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80&w=400"
     },
     {
       id: 2,
@@ -30,7 +30,8 @@ const Services = () => {
         "Marketing Digital",
         "Análise de Desempenho",
         "Otimização de Campanhas"
-      ]
+      ],
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400"
     },
     {
       id: 3,
@@ -44,11 +45,12 @@ const Services = () => {
         "Integração de Sistemas",
         "Implantação de CRM",
         "Fluxos de Trabalho"
-      ]
+      ],
+      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=400"
     },
     {
       id: 4,
-      icon: <Package className="h-10 w-10 text-mk-orange" />, // Changed from Cube to Package
+      icon: <Package className="h-10 w-10 text-mk-orange" />,
       title: "Impressão 3D",
       description: "Transforme ideias em objetos reais com nossa tecnologia de ponta.",
       items: [
@@ -58,7 +60,8 @@ const Services = () => {
         "Brindes Corporativos",
         "Maquetes Arquitetônicas",
         "Peças Decorativas"
-      ]
+      ],
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=400"
     }
   ];
 
@@ -72,31 +75,40 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <div 
               key={service.id} 
-              className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow border border-gray-100 animate-fade-in"
+              className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow border border-gray-100 animate-fade-in overflow-hidden flex flex-col"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="mb-4">{service.icon}</div>
-              <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-              <p className="text-gray-600 mb-4">{service.description}</p>
-              <ul className="space-y-2">
-                {service.items.map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-mk-orange"></span>
-                    <span className="text-sm">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <a 
-                href="#contato" 
-                className="mt-6 inline-flex items-center text-mk-orange font-medium hover:underline"
-              >
-                Saiba mais
-                <ArrowRight size={16} className="ml-1" />
-              </a>
+              <div className="aspect-video w-full overflow-hidden bg-gray-100">
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                />
+              </div>
+              <div className="p-6 flex-grow flex flex-col">
+                <div className="mb-4">{service.icon}</div>
+                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                <p className="text-gray-600 mb-4">{service.description}</p>
+                <ul className="space-y-2 mt-auto mb-4">
+                  {service.items.slice(0, 3).map((item, idx) => (
+                    <li key={idx} className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-mk-orange"></span>
+                      <span className="text-sm">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a 
+                  href="#contato" 
+                  className="mt-auto inline-flex items-center text-mk-orange font-medium hover:underline"
+                >
+                  Saiba mais
+                  <ArrowRight size={16} className="ml-1" />
+                </a>
+              </div>
             </div>
           ))}
         </div>
