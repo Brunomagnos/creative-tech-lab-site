@@ -1,5 +1,6 @@
 
 import { ArrowUp, Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
+import { Link } from "react-router-dom";
 import Logo from "./Logo";
 
 const Footer = () => {
@@ -42,11 +43,11 @@ const Footer = () => {
             <div>
               <h3 className="font-bold mb-4 text-lg">Serviços</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-mk-orange transition-colors">Produção Audiovisual</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-mk-orange transition-colors">Marketing & Performance</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-mk-orange transition-colors">Automação</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-mk-orange transition-colors">Impressão 3D</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-mk-orange transition-colors">Pós-Produção</a></li>
+                <li><a href="#servicos" className="text-gray-400 hover:text-mk-orange transition-colors">Produção Audiovisual</a></li>
+                <li><a href="#servicos" className="text-gray-400 hover:text-mk-orange transition-colors">Marketing & Performance</a></li>
+                <li><a href="#servicos" className="text-gray-400 hover:text-mk-orange transition-colors">Automação</a></li>
+                <li><a href="#servicos" className="text-gray-400 hover:text-mk-orange transition-colors">Impressão 3D</a></li>
+                <li><Link to="/servicos/pos-producao" className="text-gray-400 hover:text-mk-orange transition-colors">Pós-Produção</Link></li>
               </ul>
             </div>
             
@@ -68,6 +69,13 @@ const Footer = () => {
                 <li className="text-gray-400">mkcreativelab@empresa.com.br</li>
                 <li className="text-gray-400">Curitiba, Paraná, Brasil</li>
               </ul>
+              <div className="mt-6">
+                <h3 className="font-bold mb-2 text-lg">Legal</h3>
+                <ul className="space-y-2">
+                  <li><Link to="/politica-de-privacidade" className="text-gray-400 hover:text-mk-orange transition-colors">Política de Privacidade</Link></li>
+                  <li><Link to="/termos-de-uso" className="text-gray-400 hover:text-mk-orange transition-colors">Termos de Uso</Link></li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
