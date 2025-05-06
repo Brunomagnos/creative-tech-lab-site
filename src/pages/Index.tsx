@@ -20,7 +20,7 @@ const Index = () => {
       <Header />
       <Hero />
       <div className="container py-16">
-        <h2 className="text-center text-3xl font-bold mb-8">Nossa Marca</h2>
+        <h2 className="text-center text-3xl font-bold mb-8 dark:text-white">Nossa Marca</h2>
         <Logo3D className="w-full max-w-md mx-auto my-8" />
         <p className="text-center text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
           Nossa marca representa a fusão entre criatividade e tecnologia. 

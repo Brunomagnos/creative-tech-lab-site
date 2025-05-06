@@ -18,7 +18,7 @@ const WhatsAppButton = () => {
     >
       <div className="relative">
         <Phone size={28} className="text-white" />
-        {/* WhatsApp logo */}
+        {/* WhatsApp logo indicator */}
         <span className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full flex items-center justify-center">
           <span className="text-[#25D366] text-[8px] font-bold">W</span>
         </span>
