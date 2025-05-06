@@ -40,71 +40,56 @@ const Logo: React.FC<LogoProps> = ({
           xmlns="http://www.w3.org/2000/svg"
           className={`h-full w-auto`}
         >
-          {/* 3D Printer + Camera Icon */}
+          {/* Simplified 3D Printer Icon */}
           <g>
-            {/* Camera Body */}
-            <path 
-              d="M65 45H25C20 45 15 50 15 55V75C15 80 20 85 25 85H65C70 85 75 80 75 75V55C75 50 70 45 65 45Z" 
-              fill={actualColorMode === "color" ? "#1A2A36" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
-            />
-            
-            {/* Camera Lens */}
-            <circle 
-              cx="45" 
-              cy="65" 
-              r="15" 
-              fill={actualColorMode === "color" ? "#1A2A36" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")} 
-              stroke={actualColorMode === "white" ? "#000000" : "#FFFFFF"} 
-              strokeWidth="2"
-            />
-            <circle 
-              cx="45" 
-              cy="65" 
-              r="10" 
-              fill={actualColorMode === "color" ? "#000000" : (actualColorMode === "white" ? "#CCCCCC" : "#333333")} 
-            />
-            <circle 
-              cx="42" 
-              cy="62" 
-              r="3" 
-              fill={actualColorMode === "color" ? "#FFFFFF" : (actualColorMode === "white" ? "#FFFFFF" : "#FFFFFF")} 
-              fillOpacity="0.5"
-            />
-
-            {/* 3D Printer top parts */}
+            {/* Printer Base */}
             <rect 
               x="20" 
-              y="15" 
-              width="20" 
-              height="20" 
-              fill={actualColorMode === "color" ? "#1A2A36" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
+              y="70" 
+              width="60" 
+              height="15" 
+              fill={actualColorMode === "color" ? "#000000" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
             />
-            <path 
-              d="M55 35C55 25 47 15 35 15" 
-              stroke={actualColorMode === "color" ? "#1A2A36" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
-              strokeWidth="6"
-              fill="none"
-            />
-            <rect 
-              x="40" 
-              y="25" 
-              width="10" 
-              height="10" 
-              fill={actualColorMode === "color" ? "#FFFFFF" : (actualColorMode === "white" ? "#1A2A36" : "#FFFFFF")}
-            />
+            
+            {/* Printer Columns */}
             <rect 
               x="25" 
-              y="25" 
-              width="15" 
-              height="5" 
-              fill={actualColorMode === "color" ? "#1A2A36" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
+              y="30" 
+              width="10" 
+              height="40" 
+              fill={actualColorMode === "color" ? "#000000" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
             />
-
-            {/* Orange flowing filament */}
+            <rect 
+              x="65" 
+              y="30" 
+              width="10" 
+              height="40" 
+              fill={actualColorMode === "color" ? "#000000" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
+            />
+            
+            {/* Printer Top */}
+            <rect 
+              x="20" 
+              y="20" 
+              width="60" 
+              height="10" 
+              fill={actualColorMode === "color" ? "#000000" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
+            />
+            
+            {/* Print Head */}
+            <rect 
+              x="40" 
+              y="40" 
+              width="20" 
+              height="10" 
+              fill={actualColorMode === "color" ? "#FF5A00" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
+            />
+            
+            {/* Orange Filament */}
             <path 
-              d="M35 35C35 35 45 25 65 35C85 45 85 40 85 40" 
+              d="M50 40C50 40 60 35 70 40" 
               stroke={actualColorMode === "color" ? "#FF5A00" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
-              strokeWidth="6"
+              strokeWidth="4"
               fill="none"
               strokeLinecap="round"
             />
@@ -121,7 +106,7 @@ const Logo: React.FC<LogoProps> = ({
         <span className={`font-bold text-${size} ${actualColorMode === "color" ? "text-mk-orange" : (actualColorMode === "white" ? "text-white" : "text-black")}`}>
           MK
         </span>
-        <span className={`font-medium text-${size} ${actualColorMode === "color" ? "text-mk-black" : (actualColorMode === "white" ? "text-white" : "text-black")}`}>
+        <span className={`font-medium text-${size} ${actualColorMode === "color" ? "text-black dark:text-white" : (actualColorMode === "white" ? "text-white" : "text-black")}`}>
           Creative Lab
         </span>
       </div>
@@ -137,71 +122,56 @@ const Logo: React.FC<LogoProps> = ({
         xmlns="http://www.w3.org/2000/svg"
         className={`${sizeClasses[size]} w-auto`}
       >
-        {/* 3D Printer + Camera Icon */}
+        {/* Simplified 3D Printer Icon */}
         <g>
-          {/* Camera Body */}
-          <path 
-            d="M65 45H25C20 45 15 50 15 55V75C15 80 20 85 25 85H65C70 85 75 80 75 75V55C75 50 70 45 65 45Z" 
-            fill={actualColorMode === "color" ? "#1A2A36" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
-          />
-          
-          {/* Camera Lens */}
-          <circle 
-            cx="45" 
-            cy="65" 
-            r="15" 
-            fill={actualColorMode === "color" ? "#1A2A36" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")} 
-            stroke={actualColorMode === "white" ? "#000000" : "#FFFFFF"} 
-            strokeWidth="2"
-          />
-          <circle 
-            cx="45" 
-            cy="65" 
-            r="10" 
-            fill={actualColorMode === "color" ? "#000000" : (actualColorMode === "white" ? "#CCCCCC" : "#333333")} 
-          />
-          <circle 
-            cx="42" 
-            cy="62" 
-            r="3" 
-            fill={actualColorMode === "color" ? "#FFFFFF" : (actualColorMode === "white" ? "#FFFFFF" : "#FFFFFF")} 
-            fillOpacity="0.5"
-          />
-
-          {/* 3D Printer top parts */}
+          {/* Printer Base */}
           <rect 
             x="20" 
-            y="15" 
-            width="20" 
-            height="20" 
-            fill={actualColorMode === "color" ? "#1A2A36" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
+            y="70" 
+            width="60" 
+            height="15" 
+            fill={actualColorMode === "color" ? "#000000" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
           />
-          <path 
-            d="M55 35C55 25 47 15 35 15" 
-            stroke={actualColorMode === "color" ? "#1A2A36" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
-            strokeWidth="6"
-            fill="none"
-          />
-          <rect 
-            x="40" 
-            y="25" 
-            width="10" 
-            height="10" 
-            fill={actualColorMode === "color" ? "#FFFFFF" : (actualColorMode === "white" ? "#1A2A36" : "#FFFFFF")}
-          />
+          
+          {/* Printer Columns */}
           <rect 
             x="25" 
-            y="25" 
-            width="15" 
-            height="5" 
-            fill={actualColorMode === "color" ? "#1A2A36" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
+            y="30" 
+            width="10" 
+            height="40" 
+            fill={actualColorMode === "color" ? "#000000" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
           />
-
-          {/* Orange flowing filament */}
+          <rect 
+            x="65" 
+            y="30" 
+            width="10" 
+            height="40" 
+            fill={actualColorMode === "color" ? "#000000" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
+          />
+          
+          {/* Printer Top */}
+          <rect 
+            x="20" 
+            y="20" 
+            width="60" 
+            height="10" 
+            fill={actualColorMode === "color" ? "#000000" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
+          />
+          
+          {/* Print Head */}
+          <rect 
+            x="40" 
+            y="40" 
+            width="20" 
+            height="10" 
+            fill={actualColorMode === "color" ? "#FF5A00" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
+          />
+          
+          {/* Orange Filament */}
           <path 
-            d="M35 35C35 35 45 25 65 35C85 45 85 40 85 40" 
+            d="M50 40C50 40 60 35 70 40" 
             stroke={actualColorMode === "color" ? "#FF5A00" : (actualColorMode === "white" ? "#FFFFFF" : "#000000")}
-            strokeWidth="6"
+            strokeWidth="4"
             fill="none"
             strokeLinecap="round"
           />
@@ -211,7 +181,7 @@ const Logo: React.FC<LogoProps> = ({
         <span className={`font-bold text-lg leading-tight ${actualColorMode === "color" ? "text-mk-orange" : (actualColorMode === "white" ? "text-white" : "text-black")}`}>
           MK
         </span>
-        <span className={`font-medium text-sm leading-tight ${actualColorMode === "color" ? (theme === "dark" ? "text-white" : "text-mk-black") : (actualColorMode === "white" ? "text-white" : "text-black")}`}>
+        <span className={`font-medium text-sm leading-tight ${actualColorMode === "color" ? (theme === "dark" ? "text-white" : "text-black") : (actualColorMode === "white" ? "text-white" : "text-black")}`}>
           Creative Lab
         </span>
       </div>

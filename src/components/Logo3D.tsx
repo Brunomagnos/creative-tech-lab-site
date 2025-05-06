@@ -17,9 +17,9 @@ const Logo3D: React.FC<{ className?: string }> = ({ className = '' }) => {
     canvas.width = 200;
     canvas.height = 200;
     
-    // Colors based on theme
+    // Colors based on theme - only using black, white, and orange
     const textColor = theme === 'dark' ? '#FFFFFF' : '#000000';
-    const printerColor = theme === 'dark' ? '#444444' : '#222222';
+    const printerColor = theme === 'dark' ? '#000000' : '#000000';
     const accentColor = '#FF5A00'; // MK orange
     
     // Clear canvas
@@ -29,7 +29,7 @@ const Logo3D: React.FC<{ className?: string }> = ({ className = '' }) => {
     ctx.fillStyle = printerColor;
     ctx.fillRect(40, 140, 120, 30);
     
-    // Draw printer column
+    // Draw printer columns
     ctx.fillRect(40, 60, 15, 80);
     ctx.fillRect(145, 60, 15, 80);
     ctx.fillRect(40, 45, 120, 15);
