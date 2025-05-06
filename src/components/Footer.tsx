@@ -24,16 +24,16 @@ const Footer = () => {
               soluções de alto impacto em Curitiba e para todo o Brasil.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="bg-white/10 hover:bg-mk-orange rounded-full p-2.5 transition-colors">
+              <a href="#" className="bg-white/10 hover:bg-mk-orange rounded-full p-2.5 transition-colors hover-scale">
                 <Instagram size={20} className="text-white" />
               </a>
-              <a href="#" className="bg-white/10 hover:bg-mk-orange rounded-full p-2.5 transition-colors">
+              <a href="#" className="bg-white/10 hover:bg-mk-orange rounded-full p-2.5 transition-colors hover-scale">
                 <Facebook size={20} className="text-white" />
               </a>
-              <a href="#" className="bg-white/10 hover:bg-mk-orange rounded-full p-2.5 transition-colors">
+              <a href="#" className="bg-white/10 hover:bg-mk-orange rounded-full p-2.5 transition-colors hover-scale">
                 <Linkedin size={20} className="text-white" />
               </a>
-              <a href="#" className="bg-white/10 hover:bg-mk-orange rounded-full p-2.5 transition-colors">
+              <a href="#" className="bg-white/10 hover:bg-mk-orange rounded-full p-2.5 transition-colors hover-scale">
                 <Youtube size={20} className="text-white" />
               </a>
             </div>
@@ -86,7 +86,7 @@ const Footer = () => {
           </p>
           <button
             onClick={scrollToTop}
-            className="bg-mk-orange hover:bg-opacity-80 text-white p-3 rounded-full mt-4 md:mt-0 transition-colors"
+            className="bg-mk-orange hover:bg-opacity-80 text-white p-3 rounded-full mt-4 md:mt-0 transition-colors hover-scale"
             aria-label="Voltar ao topo"
           >
             <ArrowUp size={20} />

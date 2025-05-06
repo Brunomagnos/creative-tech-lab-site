@@ -1,9 +1,10 @@
 
 import React from "react";
+import { useTheme } from "../contexts/ThemeContext";
 
 interface LogoProps {
   variant?: "full" | "icon" | "text";
-  colorMode?: "color" | "black" | "white";
+  colorMode?: "color" | "black" | "white" | "auto";
   size?: "sm" | "md" | "lg" | "xl";
   className?: string;
 }
@@ -14,6 +15,13 @@ const Logo: React.FC<LogoProps> = ({
   size = "md",
   className = "",
 }) => {
+  const { theme } = useTheme();
+  
+  // Auto mode will choose based on current theme
+  const actualColorMode = colorMode === "auto" 
+    ? (theme === "dark" ? "white" : "color")
+    : colorMode;
+
   // Size mapping
   const sizeClasses = {
     sm: "h-6",
@@ -55,14 +63,14 @@ const Logo: React.FC<LogoProps> = ({
             width="40" 
             height="40" 
             rx="8" 
-            className={`fill-current ${colors[colorMode].primary}`}
+            className={`fill-current ${colors[actualColorMode].primary}`}
           />
           <path
             d="M10 10L18 20L10 30M22 10L30 20L22 30"
             strokeWidth="3.5"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className={`stroke-current ${colors[colorMode].accent}`}
+            className={`stroke-current ${colors[actualColorMode].accent}`}
           />
         </svg>
       </div>
@@ -73,10 +81,10 @@ const Logo: React.FC<LogoProps> = ({
   if (variant === "text") {
     return (
       <div className={`flex items-center ${className}`}>
-        <span className={`font-bold text-${size} ${colors[colorMode].accent}`}>
+        <span className={`font-bold text-${size} ${colors[actualColorMode].accent}`}>
           MK
         </span>
-        <span className={`font-medium text-${size} ${colors[colorMode].primary}`}>
+        <span className={`font-medium text-${size} ${colors[actualColorMode].primary}`}>
           Creative Lab
         </span>
       </div>
@@ -96,21 +104,21 @@ const Logo: React.FC<LogoProps> = ({
           width="40" 
           height="40" 
           rx="8" 
-          className={`fill-current ${colors[colorMode].primary}`}
+          className={`fill-current ${colors[actualColorMode].primary}`}
         />
         <path
           d="M10 10L18 20L10 30M22 10L30 20L22 30"
           strokeWidth="3.5"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className={`stroke-current ${colors[colorMode].accent}`}
+          className={`stroke-current ${colors[actualColorMode].accent}`}
         />
       </svg>
       <div className="flex flex-col items-start justify-center">
-        <span className={`font-bold text-lg leading-tight ${colors[colorMode].accent}`}>
+        <span className={`font-bold text-lg leading-tight ${colors[actualColorMode].accent}`}>
           MK
         </span>
-        <span className={`font-medium text-sm leading-tight ${colors[colorMode].primary}`}>
+        <span className={`font-medium text-sm leading-tight ${colors[actualColorMode].primary}`}>
           Creative Lab
         </span>
       </div>
