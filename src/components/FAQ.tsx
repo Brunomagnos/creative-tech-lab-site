@@ -37,7 +37,7 @@ const FAQ = () => {
   ];
 
   return (
-    <section id="faq" className="section-container bg-white">
+    <section id="faq" className="section-container bg-background">
       <div className="container">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="section-title">Perguntas <span className="text-mk-orange">Frequentes</span></h2>
@@ -50,14 +50,14 @@ const FAQ = () => {
           {faqs.map((faq, index) => (
             <div 
               key={index}
-              className="border-b border-gray-200 animate-fade-in"
+              className="border-b border-border animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <button
                 className="flex justify-between items-center w-full py-5 text-left"
                 onClick={() => toggleFaq(index)}
               >
-                <h3 className="text-lg font-medium">{faq.question}</h3>
+                <h3 className="text-lg font-medium text-foreground">{faq.question}</h3>
                 <ChevronDown
                   className={`h-5 w-5 text-mk-orange transition-transform duration-300 ${
                     openIndex === index ? "rotate-180" : ""
@@ -69,14 +69,14 @@ const FAQ = () => {
                   openIndex === index ? "max-h-96" : "max-h-0"
                 }`}
               >
-                <p className="pb-5 text-gray-600">{faq.answer}</p>
+                <p className="pb-5 text-foreground/80">{faq.answer}</p>
               </div>
             </div>
           ))}
         </div>
 
         <div className="text-center mt-16">
-          <p className="text-gray-600 mb-6">
+          <p className="text-foreground/80 mb-6">
             Não encontrou o que procurava? Entre em contato conosco.
           </p>
           <a href="#contato" className="btn-primary">

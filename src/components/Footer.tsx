@@ -19,7 +19,7 @@ const Footer = () => {
             <a href="#" className="inline-block mb-4">
               <Logo variant="full" colorMode="white" size="lg" />
             </a>
-            <p className="text-gray-400 mb-6">
+            <p className="text-white/80 mb-6">
               Somos um laboratório criativo que integra arte e tecnologia para entregar 
               soluções de alto impacto em Curitiba e para todo o Brasil.
             </p>
@@ -43,37 +43,37 @@ const Footer = () => {
             <div>
               <h3 className="font-bold mb-4 text-lg">Serviços</h3>
               <ul className="space-y-2">
-                <li><a href="#servicos" className="text-gray-400 hover:text-mk-orange transition-colors">Produção Audiovisual</a></li>
-                <li><a href="#servicos" className="text-gray-400 hover:text-mk-orange transition-colors">Marketing & Performance</a></li>
-                <li><a href="#servicos" className="text-gray-400 hover:text-mk-orange transition-colors">Automação</a></li>
-                <li><a href="#servicos" className="text-gray-400 hover:text-mk-orange transition-colors">Impressão 3D</a></li>
-                <li><Link to="/servicos/pos-producao" className="text-gray-400 hover:text-mk-orange transition-colors">Pós-Produção</Link></li>
+                <li><a href="#servicos" className="text-white/80 hover:text-mk-orange transition-colors">Produção Audiovisual</a></li>
+                <li><a href="#servicos" className="text-white/80 hover:text-mk-orange transition-colors">Marketing & Performance</a></li>
+                <li><a href="#servicos" className="text-white/80 hover:text-mk-orange transition-colors">Automação</a></li>
+                <li><a href="#servicos" className="text-white/80 hover:text-mk-orange transition-colors">Impressão 3D</a></li>
+                <li><Link to="/servicos/pos-producao" className="text-white/80 hover:text-mk-orange transition-colors">Pós-Produção</Link></li>
               </ul>
             </div>
             
             <div>
               <h3 className="font-bold mb-4 text-lg">Links Rápidos</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-mk-orange transition-colors">Home</a></li>
-                <li><a href="#sobre" className="text-gray-400 hover:text-mk-orange transition-colors">Sobre Nós</a></li>
-                <li><a href="#servicos" className="text-gray-400 hover:text-mk-orange transition-colors">Nossos Serviços</a></li>
-                <li><a href="#portfolio" className="text-gray-400 hover:text-mk-orange transition-colors">Portfólio</a></li>
-                <li><a href="#contato" className="text-gray-400 hover:text-mk-orange transition-colors">Contato</a></li>
+                <li><a href="#" className="text-white/80 hover:text-mk-orange transition-colors">Home</a></li>
+                <li><a href="#sobre" className="text-white/80 hover:text-mk-orange transition-colors">Sobre Nós</a></li>
+                <li><a href="#servicos" className="text-white/80 hover:text-mk-orange transition-colors">Nossos Serviços</a></li>
+                <li><a href="#portfolio" className="text-white/80 hover:text-mk-orange transition-colors">Portfólio</a></li>
+                <li><a href="#contato" className="text-white/80 hover:text-mk-orange transition-colors">Contato</a></li>
               </ul>
             </div>
             
             <div>
               <h3 className="font-bold mb-4 text-lg">Contato</h3>
               <ul className="space-y-2">
-                <li className="text-gray-400">+55 41 99916-7996</li>
-                <li className="text-gray-400">mkcreativelab@empresa.com.br</li>
-                <li className="text-gray-400">Curitiba, Paraná, Brasil</li>
+                <li className="text-white/80">+55 41 99916-7996</li>
+                <li className="text-white/80">mkcreativelab@empresa.com.br</li>
+                <li className="text-white/80">Curitiba, Paraná, Brasil</li>
               </ul>
               <div className="mt-6">
                 <h3 className="font-bold mb-2 text-lg">Legal</h3>
                 <ul className="space-y-2">
-                  <li><Link to="/politica-de-privacidade" className="text-gray-400 hover:text-mk-orange transition-colors">Política de Privacidade</Link></li>
-                  <li><Link to="/termos-de-uso" className="text-gray-400 hover:text-mk-orange transition-colors">Termos de Uso</Link></li>
+                  <li><Link to="/politica-de-privacidade" className="text-white/80 hover:text-mk-orange transition-colors">Política de Privacidade</Link></li>
+                  <li><Link to="/termos-de-uso" className="text-white/80 hover:text-mk-orange transition-colors">Termos de Uso</Link></li>
                 </ul>
               </div>
             </div>
@@ -81,7 +81,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-white/10 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">
+          <p className="text-white/80 text-sm">
             © {new Date().getFullYear()} MK Creative Lab. Todos os direitos reservados.
           </p>
           <button

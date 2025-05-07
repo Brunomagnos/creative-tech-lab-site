@@ -29,21 +29,21 @@ const About = () => {
             <div className="space-y-4">
               <div className="border-l-4 border-mk-orange pl-4">
                 <h3 className="text-xl font-bold">Missão</h3>
-                <p className="text-gray-300">
+                <p className="text-white/80">
                   Transformar ideias em resultados visíveis e mensuráveis através da perfeita integração entre arte e tecnologia.
                 </p>
               </div>
               
               <div className="border-l-4 border-mk-orange pl-4 mt-6">
                 <h3 className="text-xl font-bold">Visão</h3>
-                <p className="text-gray-300">
+                <p className="text-white/80">
                   Ser referência em soluções criativas e tecnológicas que realmente impulsionam negócios e causam impacto positivo.
                 </p>
               </div>
               
               <div className="border-l-4 border-mk-orange pl-4 mt-6">
                 <h3 className="text-xl font-bold">Valores</h3>
-                <p className="text-gray-300">
+                <p className="text-white/80">
                   Excelência, inovação, compromisso com resultados, transparência e aprendizado contínuo.
                 </p>
               </div>

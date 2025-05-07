@@ -101,11 +101,11 @@
 }
 
 .section-title {
-  @apply text-3xl md:text-4xl lg:text-5xl font-bold mb-4;
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground;
 }
 
 .section-subtitle {
-  @apply text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto;
+  @apply text-xl text-foreground/80 mb-8 max-w-3xl mx-auto;
 }
 
 .section-container {
@@ -128,4 +128,26 @@
 
 .glass-effect {
   @apply bg-black/5 backdrop-blur-md;
+}
+
+/* Form elements with better contrast */
+.form-input {
+  @apply w-full px-4 py-2 border border-input bg-background text-foreground rounded-md focus:outline-none focus:ring-2 focus:ring-primary;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-foreground/90 mb-1;
+}
+
+.form-error {
+  @apply text-red-500 dark:text-red-400 text-xs mt-1;
+}
+
+.form-select {
+  @apply w-full px-4 py-2 border border-input bg-background text-foreground rounded-md focus:outline-none focus:ring-2 focus:ring-primary;
+}
+
+/* Card styles with proper contrast */
+.contrast-card {
+  @apply bg-card text-card-foreground border border-border rounded-lg shadow-sm;
 }

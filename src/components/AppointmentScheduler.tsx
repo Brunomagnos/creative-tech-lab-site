@@ -58,15 +58,15 @@ const AppointmentScheduler = ({ onClose }: { onClose: () => void }) => {
 
   return (
     <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
-        <div className="border-b border-gray-200 p-4 flex items-center justify-between">
+      <div className="bg-background rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+        <div className="border-b border-border p-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Calendar className="text-mk-orange" />
-            <h2 className="text-xl font-bold">Agendar Consulta</h2>
+            <h2 className="text-xl font-bold text-foreground">Agendar Consulta</h2>
           </div>
           <button 
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700"
+            className="text-foreground/70 hover:text-foreground"
           >
             &times;
           </button>
@@ -74,7 +74,7 @@ const AppointmentScheduler = ({ onClose }: { onClose: () => void }) => {
         
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="name" className="form-label">
               Nome Completo
             </label>
             <input
@@ -82,14 +82,14 @@ const AppointmentScheduler = ({ onClose }: { onClose: () => void }) => {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-mk-orange"
+              className="form-input"
               required
             />
           </div>
           
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="email" className="form-label">
                 Email
               </label>
               <input
@@ -97,12 +97,12 @@ const AppointmentScheduler = ({ onClose }: { onClose: () => void }) => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-mk-orange"
+                className="form-input"
                 required
               />
             </div>
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="phone" className="form-label">
                 Telefone
               </label>
               <input
@@ -110,21 +110,21 @@ const AppointmentScheduler = ({ onClose }: { onClose: () => void }) => {
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-mk-orange"
+                className="form-input"
                 required
               />
             </div>
           </div>
           
           <div>
-            <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="service" className="form-label">
               Serviço de Interesse
             </label>
             <select
               id="service"
               value={service}
               onChange={(e) => setService(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-mk-orange"
+              className="form-select"
               required
             >
               <option value="">Selecione um serviço</option>
@@ -137,14 +137,14 @@ const AppointmentScheduler = ({ onClose }: { onClose: () => void }) => {
           </div>
           
           <div>
-            <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="date" className="form-label">
               Data
             </label>
             <select
               id="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-mk-orange"
+              className="form-select"
               required
             >
               <option value="">Selecione uma data</option>
@@ -157,14 +157,14 @@ const AppointmentScheduler = ({ onClose }: { onClose: () => void }) => {
           </div>
           
           <div>
-            <label htmlFor="time" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="time" className="form-label">
               Horário
             </label>
             <select
               id="time"
               value={time}
               onChange={(e) => setTime(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-mk-orange"
+              className="form-select"
               required
               disabled={!date}
             >
