@@ -66,11 +66,11 @@ const Services = () => {
   ];
 
   return (
-    <section id="servicos" className="section-container bg-white">
+    <section id="servicos" className="section-container bg-white dark:bg-black">
       <div className="container">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="section-title">Nossos <span className="text-mk-orange">Pilares</span></h2>
-          <p className="section-subtitle">
+          <h2 className="section-title text-black dark:text-white">Nossos <span className="text-mk-orange">Pilares</span></h2>
+          <p className="section-subtitle text-black dark:text-white">
             Combinamos arte e tecnologia para criar soluções completas e integradas
           </p>
         </div>
@@ -79,10 +79,10 @@ const Services = () => {
           {services.map((service, index) => (
             <div 
               key={service.id} 
-              className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow border border-gray-100 animate-fade-in overflow-hidden flex flex-col"
+              className="bg-white dark:bg-mk-black rounded-lg shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-800 animate-fade-in overflow-hidden flex flex-col"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="aspect-video w-full overflow-hidden bg-gray-100">
+              <div className="aspect-video w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
                 <img 
                   src={service.image} 
                   alt={service.title}
@@ -91,13 +91,13 @@ const Services = () => {
               </div>
               <div className="p-6 flex-grow flex flex-col">
                 <div className="mb-4">{service.icon}</div>
-                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                <p className="text-gray-600 mb-4">{service.description}</p>
+                <h3 className="text-xl font-bold mb-3 text-black dark:text-white">{service.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">{service.description}</p>
                 <ul className="space-y-2 mt-auto mb-4">
                   {service.items.slice(0, 3).map((item, idx) => (
                     <li key={idx} className="flex items-center gap-2">
                       <span className="h-1.5 w-1.5 rounded-full bg-mk-orange"></span>
-                      <span className="text-sm">{item}</span>
+                      <span className="text-sm text-gray-800 dark:text-gray-200">{item}</span>
                     </li>
                   ))}
                 </ul>

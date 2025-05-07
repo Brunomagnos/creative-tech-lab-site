@@ -39,7 +39,7 @@ const Solutions = () => {
       <div className="container">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="section-title text-white">Soluções <span className="text-mk-orange">Para Você</span></h2>
-          <p className="section-subtitle text-gray-300">
+          <p className="section-subtitle text-white/80">
             Serviços personalizados para atender as necessidades específicas do seu negócio
           </p>
         </div>
@@ -63,12 +63,12 @@ const Solutions = () => {
               </div>
               
               <CardContent className="p-6">
-                <p className="text-gray-300 mb-4">{solution.description}</p>
+                <p className="text-white/90 mb-4">{solution.description}</p>
                 <ul className="space-y-2 mb-6">
                   {solution.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2">
                       <div className="mt-1 h-2 w-2 rounded-full bg-mk-orange flex-shrink-0"></div>
-                      <span className="text-gray-200">{feature}</span>
+                      <span className="text-white/90">{feature}</span>
                     </li>
                   ))}
                 </ul>
