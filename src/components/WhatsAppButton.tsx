@@ -1,6 +1,7 @@
 
 import { Phone } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
+import { formatRequestMessage, generateRequestCode } from "../utils/serviceUtils";
 
 const WhatsAppButton = () => {
   const { theme } = useTheme();
@@ -36,9 +37,6 @@ const WhatsAppButton = () => {
   );
 };
 
-export { handleWhatsAppMessage };
-export default WhatsAppButton;
-
 // Function to generate a customized WhatsApp message
 export const handleWhatsAppMessage = (data: {
   name: string;
@@ -71,7 +69,13 @@ export const handleWhatsAppMessage = (data: {
   formattedMessage += `*Mensagem:*\n${message}\n\n`;
   formattedMessage += `Este pedido foi enviado através do site da MK Creative Lab.`;
   
+  // Generate unique request code
+  const requestCode = generateRequestCode();
+  formattedMessage += `\n\nCódigo de solicitação: *${requestCode}*`;
+  
   // Open WhatsApp with the formatted message
   const encodedMessage = encodeURIComponent(formattedMessage);
   window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
 };
+
+export default WhatsAppButton;
