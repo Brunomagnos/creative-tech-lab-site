@@ -79,7 +79,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div 
               key={service.id} 
-              className="bg-white dark:bg-mk-black rounded-lg shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-800 animate-fade-in overflow-hidden flex flex-col"
+              className="bg-white dark:bg-mk-black rounded-lg shadow-lg hover:shadow-xl transition-shadow border border-gray-200 dark:border-gray-800 animate-fade-in overflow-hidden flex flex-col"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="aspect-video w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
