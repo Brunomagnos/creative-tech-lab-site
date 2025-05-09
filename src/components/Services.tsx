@@ -92,12 +92,12 @@ const Services = () => {
               <div className="p-6 flex-grow flex flex-col">
                 <div className="mb-4">{service.icon}</div>
                 <h3 className="text-xl font-bold mb-3 text-black dark:text-white">{service.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">{service.description}</p>
+                <p className="text-black dark:text-white mb-4">{service.description}</p>
                 <ul className="space-y-2 mt-auto mb-4">
                   {service.items.slice(0, 3).map((item, idx) => (
                     <li key={idx} className="flex items-center gap-2">
                       <span className="h-1.5 w-1.5 rounded-full bg-mk-orange"></span>
-                      <span className="text-sm text-gray-800 dark:text-gray-200">{item}</span>
+                      <span className="text-sm text-black dark:text-white">{item}</span>
                     </li>
                   ))}
                 </ul>

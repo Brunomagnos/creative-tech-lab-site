@@ -18,9 +18,10 @@ const Logo3D: React.FC<{ className?: string }> = ({ className = '' }) => {
     canvas.height = 200;
     
     // Colors based on theme - improved contrast
-    const textColor = theme === 'dark' ? '#FFFFFF' : '#000000';
     const printerColor = theme === 'dark' ? '#333333' : '#000000';
     const accentColor = '#FF5A00'; // MK orange
+    const mkTextColor = '#FFFFFF'; // MK text in white as requested
+    const labTextColor = accentColor; // Creative Lab in orange as requested
     
     // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -46,15 +47,15 @@ const Logo3D: React.FC<{ className?: string }> = ({ className = '' }) => {
     ctx.lineWidth = 5;
     ctx.stroke();
     
-    // Draw MK text
-    ctx.fillStyle = textColor;
+    // Draw MK text in white
+    ctx.fillStyle = mkTextColor;
     ctx.font = 'bold 40px Montserrat';
     ctx.fillText('M', 60, 120);
     ctx.fillText('K', 105, 120);
     
-    // Draw "Creative Lab" text
-    ctx.fillStyle = textColor;
-    ctx.font = '14px Inter';
+    // Draw "Creative Lab" text in orange
+    ctx.fillStyle = labTextColor;
+    ctx.font = 'bold 14px Inter';
     ctx.fillText('Creative Lab', 70, 140);
   }, [theme]);
   
