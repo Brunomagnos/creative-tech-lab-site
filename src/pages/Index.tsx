@@ -14,13 +14,13 @@ import MetaTags from "../components/MetaTags";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors">
+    <div className="min-h-screen bg-background text-foreground">
       <MetaTags />
       <Header />
       <Hero />
       <div className="container py-16 bg-secondary">
-        <h2 className="text-center text-3xl font-bold mb-8 text-black dark:text-white">Nossa Marca</h2>
-        <p className="text-center text-lg text-black dark:text-white max-w-2xl mx-auto">
+        <h2 className="text-center text-3xl font-bold mb-8">Nossa Marca</h2>
+        <p className="text-center text-lg max-w-2xl mx-auto">
           Nossa marca representa a fusão entre criatividade e tecnologia. 
           Como uma impressora 3D que dá forma às ideias mais inovadoras, 
           transformamos conceitos em realidade para o seu negócio.

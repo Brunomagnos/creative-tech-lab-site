@@ -2,8 +2,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
-import Logo from "./Logo";
-import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -13,41 +11,40 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed w-full bg-white/90 dark:bg-mk-black/90 backdrop-blur-md z-50 shadow-sm transition-colors duration-300">
+    <header className="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm">
       <div className="container mx-auto flex items-center justify-between py-4">
         <div className="flex items-center">
           <Link to="/" className="flex items-center gap-2">
-            <Logo variant="full" colorMode="auto" size="md" />
+            <span className="font-bold text-lg leading-tight text-mk-orange">MK</span>
+            <span className="font-medium text-sm leading-tight">Creative Lab</span>
           </Link>
         </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <a href="/#servicos" className="font-medium hover:text-mk-orange transition-colors dark:text-gray-200">
+          <a href="/#servicos" className="font-medium hover:text-mk-orange transition-colors">
             Serviços
           </a>
-          <a href="/#portfolio" className="font-medium hover:text-mk-orange transition-colors dark:text-gray-200">
+          <a href="/#portfolio" className="font-medium hover:text-mk-orange transition-colors">
             Portfólio
           </a>
-          <Link to="/servicos/pos-producao" className="font-medium hover:text-mk-orange transition-colors dark:text-gray-200">
+          <Link to="/servicos/pos-producao" className="font-medium hover:text-mk-orange transition-colors">
             Pós-Produção
           </Link>
-          <a href="/#sobre" className="font-medium hover:text-mk-orange transition-colors dark:text-gray-200">
+          <a href="/#sobre" className="font-medium hover:text-mk-orange transition-colors">
             Sobre Nós
           </a>
           <div className="flex items-center space-x-4">
-            <ThemeToggle />
-            <a href="/#contato" className="btn-primary dark:bg-opacity-90 dark:hover:bg-opacity-100">
+            <a href="/#contato" className="btn-primary">
               Contato
             </a>
           </div>
         </nav>
 
-        {/* Mobile Menu Button and Theme Toggle */}
-        <div className="md:hidden flex items-center space-x-2">
-          <ThemeToggle />
+        {/* Mobile Menu Button */}
+        <div className="md:hidden flex items-center">
           <button
-            className="text-mk-black dark:text-white hover:text-mk-orange"
+            className="text-mk-black hover:text-mk-orange"
             onClick={toggleMobileMenu}
             aria-label="Menu"
           >
@@ -58,32 +55,32 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <nav className="md:hidden bg-white dark:bg-mk-black shadow-lg transition-colors duration-300">
+        <nav className="md:hidden bg-white shadow-lg">
           <div className="container flex flex-col py-4 space-y-4">
             <a
               href="/#servicos"
-              className="font-medium py-2 hover:text-mk-orange transition-colors dark:text-gray-200"
+              className="font-medium py-2 hover:text-mk-orange transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               Serviços
             </a>
             <a
               href="/#portfolio"
-              className="font-medium py-2 hover:text-mk-orange transition-colors dark:text-gray-200"
+              className="font-medium py-2 hover:text-mk-orange transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               Portfólio
             </a>
             <Link
               to="/servicos/pos-producao"
-              className="font-medium py-2 hover:text-mk-orange transition-colors dark:text-gray-200"
+              className="font-medium py-2 hover:text-mk-orange transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               Pós-Produção
             </Link>
             <a
               href="/#sobre"
-              className="font-medium py-2 hover:text-mk-orange transition-colors dark:text-gray-200"
+              className="font-medium py-2 hover:text-mk-orange transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               Sobre Nós
