@@ -185,17 +185,10 @@ export const serviceConfigs: Record<string, ServiceConfig> = {
 };
 
 /**
- * Format a form message based on service selected
+ * Format a request message with standard format
  */
-export const formatRequestMessage = (data: {
-  name: string;
-  email: string;
-  phone: string;
-  service: string;
-  message: string;
-  customFields?: Record<string, string>;
-}): string => {
-  const { name, email, phone, service, message, customFields = {} } = data;
+export const formatRequestMessage = (formData: FormDataType) => {
+  const { name, email, phone, service, message, customFields = {} } = formData;
   
   // Get readable service name
   const serviceNames: Record<string, string> = {
@@ -257,3 +250,13 @@ export const generateRequestCode = (): string => {
   const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
   return `${prefix}-${timestamp}-${random}`;
 };
+
+// Define the FormData type if importing from Contact/index is causing circular dependencies
+export interface FormDataType {
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  message: string;
+  customFields?: Record<string, string>;
+}

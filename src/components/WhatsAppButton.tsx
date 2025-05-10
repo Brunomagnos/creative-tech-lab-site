@@ -7,10 +7,8 @@ const WhatsAppButton = () => {
   const whatsappNumber = "5541999167996"; // Format: country code + number without spaces or symbols
   
   const handleClick = (customMessage?: string) => {
-    const message = customMessage || formatRequestMessage({
-      intro: "Olá! Gostaria de solicitar um orçamento.",
-      details: `Código de pedido: ${generateRequestCode()}`
-    });
+    const message = customMessage || 
+      `Olá! Gostaria de solicitar um orçamento.\nCódigo de pedido: ${generateRequestCode()}`;
     
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, '_blank');
