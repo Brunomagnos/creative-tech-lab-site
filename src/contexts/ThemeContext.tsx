@@ -1,7 +1,7 @@
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
-type Theme = "light" | "dark";
+type Theme = "light";
 
 interface ThemeContextType {
   theme: Theme;
@@ -11,30 +11,12 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Check local storage or system preference for theme
-  const getInitialTheme = (): Theme => {
-    if (typeof window !== "undefined") {
-      const savedTheme = window.localStorage.getItem("color-theme") as Theme | null;
-      if (savedTheme) return savedTheme;
-      
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      return prefersDark ? "dark" : "light";
-    }
-    return "light"; // Default to light theme
-  };
+  // Since we're removing the light/dark functionality, we'll just use "light" as the fixed theme
+  const [theme] = useState<Theme>("light");
 
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
-
-  // Update theme attribute on HTML element
-  useEffect(() => {
-    const root = window.document.documentElement;
-    root.classList.remove("light", "dark");
-    root.classList.add(theme);
-    localStorage.setItem("color-theme", theme);
-  }, [theme]);
-
+  // This is now a no-op function since we're removing theme toggling
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    // No-op since we're not allowing theme changes anymore
   };
 
   return (
