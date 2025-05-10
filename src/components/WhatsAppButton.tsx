@@ -1,10 +1,7 @@
-
 import { Phone } from "lucide-react";
-import { useTheme } from "../contexts/ThemeContext";
 import { formatRequestMessage, generateRequestCode } from "../utils/serviceUtils";
 
 const WhatsAppButton = () => {
-  const { theme } = useTheme();
   const whatsappNumber = "5541999167996"; // Format: country code + number without spaces or symbols
   
   const handleClick = (customMessage?: string) => {

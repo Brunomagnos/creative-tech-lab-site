@@ -17,8 +17,8 @@ const Logo3D: React.FC<{ className?: string }> = ({ className = '' }) => {
     canvas.width = 200;
     canvas.height = 200;
     
-    // Colors based on theme - improved contrast
-    const printerColor = theme === 'dark' ? '#333333' : '#000000';
+    // Colors - now only for light theme
+    const printerColor = '#000000'; // Black for light mode
     const accentColor = '#FF5A00'; // MK orange
     const mkTextColor = '#FFFFFF'; // MK text in white as requested
     const labTextColor = accentColor; // Creative Lab in orange as requested
