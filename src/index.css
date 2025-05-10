@@ -75,7 +75,7 @@
 }
 
 .section-subtitle {
-  @apply text-xl text-foreground/80 mb-8 max-w-3xl mx-auto;
+  @apply text-xl mb-8 max-w-3xl mx-auto;
 }
 
 .section-container {

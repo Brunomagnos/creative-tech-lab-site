@@ -51,7 +51,7 @@ const PostProduction = () => {
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-mk-black">
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <div className="absolute inset-0 bg-black/60 z-10"></div>
+          <div className="absolute inset-0 bg-black/70 z-10"></div>
           <video 
             autoPlay 
             muted 
@@ -72,7 +72,7 @@ const PostProduction = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white animate-fade-in">
               Serviços de <span className="text-mk-orange">Pós-Produção</span>
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-gray-200 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+            <p className="mt-6 text-lg md:text-xl text-white animate-fade-in" style={{ animationDelay: "0.1s" }}>
               Transformamos material bruto em obras-primas através de técnicas avançadas de 
               edição, color grading, motion graphics e design de áudio.
             </p>
@@ -94,7 +94,7 @@ const PostProduction = () => {
         <div className="container">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="section-title">Nossos Serviços de <span className="text-mk-orange">Pós-Produção</span></h2>
-            <p className="section-subtitle">
+            <p className="section-subtitle text-gray-700">
               Oferecemos soluções completas para finalizar seu projeto audiovisual com excelência
             </p>
           </div>
@@ -108,7 +108,7 @@ const PostProduction = () => {
               >
                 <div className="mb-4">{service.icon}</div>
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
+                <p className="text-gray-700">{service.description}</p>
               </div>
             ))}
           </div>
@@ -120,7 +120,7 @@ const PostProduction = () => {
         <div className="container">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="section-title">Nosso <span className="text-mk-orange">Portfólio</span></h2>
-            <p className="section-subtitle">
+            <p className="section-subtitle text-gray-700">
               Confira alguns dos projetos de pós-produção que realizamos recentemente
             </p>
           </div>
@@ -175,7 +175,7 @@ const PostProduction = () => {
         <div className="container">
           <div className="max-w-3xl mx-auto text-center text-white animate-fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Pronto para elevar seus vídeos ao próximo nível?</h2>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-xl text-white mb-8">
               Entre em contato conosco hoje mesmo para discutir seu próximo projeto de pós-produção.
             </p>
             <a href="#contato" className="btn-primary inline-flex items-center gap-2">

@@ -1,10 +1,8 @@
 
 import React from 'react';
-import { useTheme } from '../contexts/ThemeContext';
 
 const Logo3D: React.FC<{ className?: string }> = ({ className = '' }) => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
-  const { theme } = useTheme();
   
   React.useEffect(() => {
     const canvas = canvasRef.current;
@@ -17,7 +15,7 @@ const Logo3D: React.FC<{ className?: string }> = ({ className = '' }) => {
     canvas.width = 200;
     canvas.height = 200;
     
-    // Colors - now only for light theme
+    // Colors for light theme
     const printerColor = '#000000'; // Black for light mode
     const accentColor = '#FF5A00'; // MK orange
     const mkTextColor = '#FFFFFF'; // MK text in white as requested
@@ -57,7 +55,7 @@ const Logo3D: React.FC<{ className?: string }> = ({ className = '' }) => {
     ctx.fillStyle = labTextColor;
     ctx.font = 'bold 14px Inter';
     ctx.fillText('Creative Lab', 70, 140);
-  }, [theme]);
+  }, []);
   
   return (
     <div className={`${className} flex items-center justify-center`}>

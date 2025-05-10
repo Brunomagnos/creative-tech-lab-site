@@ -39,7 +39,7 @@ const Solutions = () => {
       <div className="container">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="section-title text-white">Soluções <span className="text-mk-orange">Para Você</span></h2>
-          <p className="section-subtitle text-white/80">
+          <p className="section-subtitle text-white">
             Serviços personalizados para atender as necessidades específicas do seu negócio
           </p>
         </div>

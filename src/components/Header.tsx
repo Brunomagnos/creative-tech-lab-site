@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -11,11 +12,11 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm">
+    <header className="fixed w-full bg-white/95 backdrop-blur-md z-50 shadow-md">
       <div className="container mx-auto flex items-center justify-between py-4">
         <div className="flex items-center">
           <Link to="/" className="flex items-center gap-2">
-            <span className="font-bold text-lg leading-tight text-mk-orange">MK</span>
+            <span className="font-bold text-xl leading-tight text-mk-orange">MK</span>
             <span className="font-medium text-sm leading-tight">Creative Lab</span>
           </Link>
         </div>
@@ -38,11 +39,13 @@ const Header = () => {
             <a href="/#contato" className="btn-primary">
               Contato
             </a>
+            <ThemeToggle />
           </div>
         </nav>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center">
+        <div className="md:hidden flex items-center gap-4">
+          <ThemeToggle />
           <button
             className="text-mk-black hover:text-mk-orange"
             onClick={toggleMobileMenu}
