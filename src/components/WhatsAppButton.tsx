@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Phone } from "lucide-react";
-import { formatRequestMessage, generateRequestCode } from "../utils/serviceUtils";
+import { generateRequestCode } from "../utils/serviceUtils";
 import { FormDataType } from "./Contact/index";
 
 const WhatsAppButton = () => {
@@ -67,8 +67,11 @@ export const handleWhatsAppMessage = (formData: FormDataType, shouldOpenInNewTab
   const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
   
   if (shouldOpenInNewTab) {
-    // Open in a new tab
-    window.open(whatsappURL, '_blank');
+    // Open in a new tab without closing the current one
+    const newWindow = window.open(whatsappURL, '_blank');
+    if (newWindow) {
+      newWindow.opener = null; // Prevent the new window from accessing the opener window
+    }
   }
   
   return whatsappURL;

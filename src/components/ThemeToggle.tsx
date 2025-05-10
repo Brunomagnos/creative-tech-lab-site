@@ -1,15 +1,9 @@
 
-import { Sun } from "lucide-react";
+import React from 'react';
 
+// Empty component since we're removing the theme toggle functionality
 const ThemeToggle = () => {
-  return (
-    <button
-      className="p-2 rounded-full bg-white/90 hover:bg-white transition-colors shadow-sm"
-      aria-label="Light mode"
-    >
-      <Sun size={20} className="text-yellow-400" />
-    </button>
-  );
+  return null;
 };
 
 export default ThemeToggle;

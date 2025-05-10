@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
-import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -35,17 +34,13 @@ const Header = () => {
           <a href="/#sobre" className="font-medium hover:text-mk-orange transition-colors">
             Sobre Nós
           </a>
-          <div className="flex items-center space-x-4">
-            <a href="/#contato" className="btn-primary">
-              Contato
-            </a>
-            <ThemeToggle />
-          </div>
+          <a href="/#contato" className="btn-primary">
+            Contato
+          </a>
         </nav>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center gap-4">
-          <ThemeToggle />
+        <div className="md:hidden">
           <button
             className="text-mk-black hover:text-mk-orange"
             onClick={toggleMobileMenu}
