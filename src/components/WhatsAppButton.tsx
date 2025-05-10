@@ -28,7 +28,7 @@ const WhatsAppButton = () => {
 };
 
 // Function to format WhatsApp message from form data
-export const handleWhatsAppMessage = (formData: FormDataType) => {
+export const handleWhatsAppMessage = (formData: FormDataType, shouldOpenInNewTab = true) => {
   const whatsappNumber = "5541999167996";
   
   // Get service label
@@ -65,8 +65,12 @@ export const handleWhatsAppMessage = (formData: FormDataType) => {
   // Generate WhatsApp URL
   const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
   
-  // Open in a new tab
-  window.open(whatsappURL, '_blank');
+  if (shouldOpenInNewTab) {
+    // Open in a new tab
+    window.open(whatsappURL, '_blank');
+  }
+  
+  return whatsappURL;
 };
 
 export default WhatsAppButton;

@@ -1,11 +1,14 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
+import { Link } from "react-router-dom";
+import { ClipboardList } from "lucide-react";
 import AppointmentScheduler from "../AppointmentScheduler";
 import ContactForm from "./ContactForm";
 import ContactInfo from "./ContactInfo";
 import MessagePreview from "./MessagePreview";
 import { generateRequestCode } from "../../utils/serviceUtils";
+import { Button } from "../ui/button";
 
 export type FormDataType = {
   name: string;
@@ -85,6 +88,22 @@ const Contact = () => {
 
           <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
             <ContactInfo onScheduleClick={openScheduler} />
+            
+            {/* Admin Link */}
+            <div className="mt-6 bg-gray-50 dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h4 className="font-medium text-gray-900 dark:text-white">Área Administrativa</h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Visualize e gerencie os pedidos de orçamento</p>
+                </div>
+                <Link to="/pedidos">
+                  <Button variant="outline" className="flex items-center gap-2">
+                    <ClipboardList size={16} />
+                    Ver Pedidos
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

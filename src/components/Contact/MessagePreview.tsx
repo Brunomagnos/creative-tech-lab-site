@@ -1,8 +1,10 @@
 
-import { Check } from "lucide-react";
+import { Check, Mail, Phone, Copy } from "lucide-react";
 import { Button } from "../ui/button";
 import { handleWhatsAppMessage } from "../WhatsAppButton";
 import { FormDataType } from "./index";
+import { toast } from "sonner";
+import { useState } from "react";
 
 interface MessagePreviewProps {
   formData: FormDataType;
@@ -12,6 +14,8 @@ interface MessagePreviewProps {
 }
 
 const MessagePreview = ({ formData, requestCode, onClose, onConfirm }: MessagePreviewProps) => {
+  const [isSending, setIsSending] = useState(false);
+
   const getServiceLabel = (service: string): string => {
     switch (service) {
       case "audiovisual": return "Produção Audiovisual";
@@ -24,18 +28,91 @@ const MessagePreview = ({ formData, requestCode, onClose, onConfirm }: MessagePr
   };
 
   const sendToWhatsApp = () => {
-    // Close the preview
-    onClose();
-    
-    // Send the message through WhatsApp
+    // Send the message through WhatsApp without closing the modal
     handleWhatsAppMessage(formData);
+    
+    // Show a success message
+    toast.success("Chat do WhatsApp aberto em uma nova aba");
+    
+    // Save the request to localStorage
+    saveRequest();
+  };
+  
+  const copyRequestInfo = () => {
+    // Format message for clipboard
+    let clipboardText = `Pedido #${requestCode}\n`;
+    clipboardText += `Serviço: ${getServiceLabel(formData.service)}\n`;
+    clipboardText += `Cliente: ${formData.name}\n`;
+    clipboardText += `Contato: ${formData.email} / ${formData.phone}\n`;
+    clipboardText += `Data: ${new Date().toLocaleString('pt-BR')}\n`;
+    
+    navigator.clipboard.writeText(clipboardText);
+    toast.success("Informações do pedido copiadas para a área de transferência");
+  };
+  
+  const sendEmail = () => {
+    // Prepare email subject and body
+    const subject = `Novo pedido #${requestCode} - ${getServiceLabel(formData.service)}`;
+    
+    let body = `Olá! Meu nome é ${formData.name}.\n\n`;
+    body += `Estou interessado(a) no serviço de ${getServiceLabel(formData.service)}.\n\n`;
+    
+    if (formData.customFields && Object.keys(formData.customFields).length > 0) {
+      body += "Detalhes específicos:\n";
+      Object.entries(formData.customFields).forEach(([key, value]) => {
+        body += `- ${key}: ${value}\n`;
+      });
+      body += "\n";
+    }
+    
+    body += `Mensagem: ${formData.message}\n\n`;
+    body += `Contato:\nEmail: ${formData.email}\nTelefone: ${formData.phone}`;
+    
+    // Create mailto URL
+    const mailtoURL = `mailto:mkcreativelab@empresa.com.br?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(mailtoURL, '_blank');
+    
+    // Show success message
+    toast.success("Cliente de email aberto em uma nova aba");
+  };
+  
+  const saveRequest = () => {
+    // Create request object to save
+    const request = {
+      id: requestCode,
+      service: getServiceLabel(formData.service),
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+      customFields: formData.customFields || {},
+      date: new Date().toISOString()
+    };
+    
+    // Get existing requests from localStorage
+    const existingRequestsString = localStorage.getItem('mkRequests');
+    const existingRequests = existingRequestsString ? JSON.parse(existingRequestsString) : [];
+    
+    // Add new request and save back to localStorage
+    existingRequests.push(request);
+    localStorage.setItem('mkRequests', JSON.stringify(existingRequests));
+  };
+
+  const handleConfirm = () => {
+    setIsSending(true);
+    
+    // Save the request first
+    saveRequest();
+    
+    // Call the original confirm function
+    onConfirm();
   };
 
   return (
     <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
       <div className="bg-card text-card-foreground rounded-lg shadow-xl p-6 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-xl font-bold">Confirmar Pedido #{requestCode}</h3>
+          <h3 className="text-xl font-bold">Pedido #{requestCode}</h3>
           <button 
             onClick={onClose}
             className="text-foreground/70 hover:text-foreground"
@@ -89,14 +166,11 @@ const MessagePreview = ({ formData, requestCode, onClose, onConfirm }: MessagePr
           </div>
         </div>
         
-        <div className="flex flex-col sm:flex-row gap-3 justify-end">
-          <Button
-            onClick={onClose}
-            variant="outline"
-            className="bg-background text-foreground border-border"
-          >
-            Editar Pedido
-          </Button>
+        <div className="mb-4">
+          <p className="text-sm text-foreground/70">Escolha como deseja continuar:</p>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
           <Button
             onClick={sendToWhatsApp}
             variant="outline"
@@ -107,12 +181,53 @@ const MessagePreview = ({ formData, requestCode, onClose, onConfirm }: MessagePr
             </svg>
             Enviar via WhatsApp
           </Button>
+          
           <Button
-            onClick={onConfirm}
-            className="bg-mk-orange hover:bg-opacity-90 text-white"
+            onClick={sendEmail}
+            variant="outline"
+            className="bg-blue-600 hover:bg-blue-700 text-white border-blue-600 hover:border-blue-700"
           >
-            <Check className="mr-2 h-4 w-4" />
-            Confirmar Pedido
+            <Mail className="h-4 w-4 mr-2" />
+            Enviar via Email
+          </Button>
+          
+          <Button
+            onClick={copyRequestInfo}
+            variant="outline"
+            className="bg-gray-600 hover:bg-gray-700 text-white border-gray-600 hover:border-gray-700"
+          >
+            <Copy className="h-4 w-4 mr-2" />
+            Copiar Informações
+          </Button>
+        </div>
+        
+        <div className="flex flex-col sm:flex-row gap-3 justify-end">
+          <Button
+            onClick={onClose}
+            variant="outline"
+            className="bg-background text-foreground border-border"
+          >
+            Editar Pedido
+          </Button>
+          <Button
+            onClick={handleConfirm}
+            className="bg-mk-orange hover:bg-opacity-90 text-white"
+            disabled={isSending}
+          >
+            {isSending ? (
+              <>
+                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Enviando...
+              </>
+            ) : (
+              <>
+                <Check className="mr-2 h-4 w-4" />
+                Confirmar Pedido
+              </>
+            )}
           </Button>
         </div>
       </div>
