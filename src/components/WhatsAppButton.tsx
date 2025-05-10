@@ -4,28 +4,9 @@ import { Phone } from "lucide-react";
 import { generateRequestCode } from "../utils/serviceUtils";
 import { FormDataType } from "./Contact/index";
 
+// This component will no longer render a floating button, but only provide utility functions
 const WhatsAppButton = () => {
-  const whatsappNumber = "5541999167996"; // Format: country code + number without spaces or symbols
-  
-  const handleClick = (customMessage?: string) => {
-    const message = customMessage || 
-      `Olá! Gostaria de solicitar um orçamento.\nCódigo de pedido: ${generateRequestCode()}`;
-    
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappURL, '_blank');
-  };
-  
-  return (
-    <div className="fixed bottom-6 right-6 z-50">
-      <button
-        onClick={() => handleClick()}
-        className="bg-green-500 hover:bg-green-600 transition-colors text-white rounded-full p-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform"
-        aria-label="Contato via WhatsApp"
-      >
-        <Phone size={24} />
-      </button>
-    </div>
-  );
+  return null; // No visible component
 };
 
 // Function to format WhatsApp message from form data

@@ -10,7 +10,6 @@ import About from "../components/About";
 import FAQ from "../components/FAQ";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
-import WhatsAppButton from "../components/WhatsAppButton";
 import MetaTags from "../components/MetaTags";
 
 const Index = () => {
@@ -35,7 +34,7 @@ const Index = () => {
       <FAQ />
       <Contact />
       <Footer />
-      <WhatsAppButton />
+      {/* WhatsAppButton removed from here */}
     </div>
   );
 };

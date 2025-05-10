@@ -1,4 +1,3 @@
-
 import { Check, Mail, Phone, Copy } from "lucide-react";
 import { Button } from "../ui/button";
 import { handleWhatsAppMessage } from "../WhatsAppButton";
@@ -36,6 +35,8 @@ const MessagePreview = ({ formData, requestCode, onClose, onConfirm }: MessagePr
     
     // Save the request to localStorage
     saveRequest();
+    
+    // Important: Not closing the preview automatically
   };
   
   const copyRequestInfo = () => {
@@ -74,6 +75,8 @@ const MessagePreview = ({ formData, requestCode, onClose, onConfirm }: MessagePr
     
     // Show success message
     toast.success("Cliente de email aberto em uma nova aba");
+    
+    // Important: Not closing the preview automatically
   };
   
   const saveRequest = () => {
