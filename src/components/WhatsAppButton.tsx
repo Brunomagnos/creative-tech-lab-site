@@ -1,6 +1,7 @@
 
 import { Phone } from "lucide-react";
 import { formatRequestMessage, generateRequestCode } from "../utils/serviceUtils";
+import { FormDataType } from "./Contact/index";
 
 const WhatsAppButton = () => {
   const whatsappNumber = "5541999167996"; // Format: country code + number without spaces or symbols
@@ -26,6 +27,48 @@ const WhatsAppButton = () => {
       </button>
     </div>
   );
+};
+
+// Function to format WhatsApp message from form data
+export const handleWhatsAppMessage = (formData: FormDataType) => {
+  const whatsappNumber = "5541999167996";
+  
+  // Get service label
+  const getServiceLabel = (service: string): string => {
+    switch (service) {
+      case "audiovisual": return "Produção Audiovisual";
+      case "marketing": return "Marketing & Performance";
+      case "automacao": return "Automação";
+      case "impressao3d": return "Impressão 3D";
+      case "pos-producao": return "Pós-Produção";
+      default: return service;
+    }
+  };
+  
+  // Format the message
+  let message = `Olá! Meu nome é ${formData.name}.\n\n`;
+  message += `Estou interessado(a) no serviço de ${getServiceLabel(formData.service)}.\n\n`;
+  
+  // Add custom fields if present
+  if (formData.customFields && Object.keys(formData.customFields).length > 0) {
+    message += "Detalhes específicos:\n";
+    Object.entries(formData.customFields).forEach(([key, value]) => {
+      message += `- ${key}: ${value}\n`;
+    });
+    message += "\n";
+  }
+  
+  // Add message content
+  message += `Mensagem: ${formData.message}\n\n`;
+  
+  // Add contact info
+  message += `Contato:\nEmail: ${formData.email}\nTelefone: ${formData.phone}`;
+  
+  // Generate WhatsApp URL
+  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  
+  // Open in a new tab
+  window.open(whatsappURL, '_blank');
 };
 
 export default WhatsAppButton;
