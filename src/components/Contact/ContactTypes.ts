@@ -15,7 +15,7 @@ export type DynamicFormSchema = z.infer<typeof baseFormSchema> & {
   customFields?: Record<string, string>;
 };
 
-// Export type for form data
+// Export type for form data (ensure all fields are required to match DynamicFormSchema)
 export type FormDataType = {
   name: string;
   email: string;

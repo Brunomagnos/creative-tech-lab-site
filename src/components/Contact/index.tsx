@@ -1,5 +1,7 @@
 
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 import { ClipboardList } from "lucide-react";
@@ -9,7 +11,7 @@ import ContactInfoSection from "./ContactInfoSection";
 import MessagePreview from "./MessagePreview";
 import { generateContactRequestCode } from "./utils";
 import { Button } from "../ui/button";
-import { FormDataType } from "./ContactTypes";
+import { DynamicFormSchema, baseFormSchema, FormDataType } from "./ContactTypes";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -17,10 +19,22 @@ const Contact = () => {
   const [showPreview, setShowPreview] = useState(false);
   const [formData, setFormData] = useState<FormDataType | null>(null);
   const [requestCode, setRequestCode] = useState<string | null>(null);
+  
+  const form = useForm<DynamicFormSchema>({
+    resolver: zodResolver(baseFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      service: "",
+      message: "",
+      customFields: {}
+    }
+  });
 
-  const handleFormSubmit = (data: FormDataType) => {
+  const handleFormSubmit = (data: DynamicFormSchema) => {
     setIsSubmitting(true);
-    setFormData(data);
+    setFormData(data as FormDataType);
     
     // Generate a unique request code
     const newRequestCode = generateContactRequestCode();
@@ -38,6 +52,7 @@ const Contact = () => {
       toast.success(`Pedido ${requestCode} enviado com sucesso! Entraremos em contato em breve.`);
       
       // Reset form state
+      form.reset();
       setFormData(null);
       setIsSubmitting(false);
     }, 1500);
@@ -73,6 +88,7 @@ const Contact = () => {
               
               <ContactForm 
                 isSubmitting={isSubmitting} 
+                form={form}
                 onSubmit={handleFormSubmit} 
               />
             </div>
@@ -116,4 +132,3 @@ const Contact = () => {
 };
 
 export default Contact;
-export type { FormDataType };

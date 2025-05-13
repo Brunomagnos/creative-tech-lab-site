@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";
@@ -32,7 +31,7 @@ const Contact = () => {
 
   const handleFormSubmit = (data: DynamicFormSchema) => {
     setIsSubmitting(true);
-    setFormData(data);
+    setFormData(data as FormDataType);
     
     // Generate a unique request code
     const newRequestCode = generateContactRequestCode();
