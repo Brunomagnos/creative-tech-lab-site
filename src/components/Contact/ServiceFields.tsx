@@ -2,7 +2,7 @@
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { UseFormReturn } from "react-hook-form";
-import { FormDataType } from "./index";
+import { FormDataType } from "./ContactTypes";
 
 interface ServiceFieldsProps {
   service: string;
