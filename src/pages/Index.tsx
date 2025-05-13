@@ -17,24 +17,25 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground">
       <MetaTags />
       <Header />
-      <Hero />
-      <div className="container py-16 bg-secondary">
-        <h2 className="text-center text-3xl font-bold mb-8">Nossa Marca</h2>
-        <p className="text-center text-lg max-w-2xl mx-auto">
-          Nossa marca representa a fusão entre criatividade e tecnologia. 
-          Como uma impressora 3D que dá forma às ideias mais inovadoras, 
-          transformamos conceitos em realidade para o seu negócio.
-        </p>
-      </div>
-      <Services />
-      <Solutions />
-      <Portfolio />
-      <Testimonials />
-      <About />
-      <FAQ />
-      <Contact />
+      <main>
+        <Hero />
+        <div className="container py-16 bg-secondary rounded-lg my-8 mx-auto">
+          <h2 className="text-center text-3xl font-bold mb-8">Nossa Marca</h2>
+          <p className="text-center text-lg max-w-2xl mx-auto">
+            Nossa marca representa a fusão entre criatividade e tecnologia. 
+            Como uma impressora 3D que dá forma às ideias mais inovadoras, 
+            transformamos conceitos em realidade para o seu negócio.
+          </p>
+        </div>
+        <Services />
+        <Solutions />
+        <Portfolio />
+        <Testimonials />
+        <About />
+        <FAQ />
+        <Contact />
+      </main>
       <Footer />
-      {/* WhatsAppButton removed from here */}
     </div>
   );
 };

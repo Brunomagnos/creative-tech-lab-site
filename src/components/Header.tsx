@@ -11,7 +11,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed w-full bg-white/95 backdrop-blur-md z-50 shadow-md">
+    <header className="sticky top-0 w-full bg-white dark:bg-mk-black border-b border-gray-200 dark:border-gray-800 z-50">
       <div className="container mx-auto flex items-center justify-between py-4">
         <div className="flex items-center">
           <Link to="/" className="flex items-center gap-2">
@@ -42,7 +42,7 @@ const Header = () => {
         {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button
-            className="text-mk-black hover:text-mk-orange"
+            className="text-mk-black hover:text-mk-orange dark:text-white dark:hover:text-mk-orange"
             onClick={toggleMobileMenu}
             aria-label="Menu"
           >
@@ -53,7 +53,7 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <nav className="md:hidden bg-white shadow-lg">
+        <nav className="md:hidden bg-white dark:bg-mk-black border-t border-gray-200 dark:border-gray-800 shadow-lg">
           <div className="container flex flex-col py-4 space-y-4">
             <a
               href="/#servicos"
