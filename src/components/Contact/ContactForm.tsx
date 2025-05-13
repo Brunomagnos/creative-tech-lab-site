@@ -1,106 +1,80 @@
 
-import { useState, useEffect } from "react";
+import React from "react";
 import { Send } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { FormDataType } from "./index";
-import ServiceFields from "./ServiceFields";
-
-// Schema for the base form
-const baseFormSchema = z.object({
-  name: z.string().min(3, { message: "Nome precisa ter pelo menos 3 caracteres" }),
-  email: z.string().email({ message: "Email inválido" }),
-  phone: z.string().min(8, { message: "Telefone inválido" }),
-  service: z.string().min(1, { message: "Selecione um serviço" }),
-  message: z.string().min(10, { message: "Mensagem precisa ter pelo menos 10 caracteres" })
-});
+import { UseFormReturn } from "react-hook-form";
+import { DynamicFormSchema } from "./ContactTypes";
+import CustomServiceFields from "./CustomServiceFields";
 
 interface ContactFormProps {
   isSubmitting: boolean;
-  onSubmit: (data: FormDataType) => void;
+  form: UseFormReturn<DynamicFormSchema>;
+  onSubmit: (data: DynamicFormSchema) => void;
 }
 
-const ContactForm = ({ isSubmitting, onSubmit }: ContactFormProps) => {
-  const form = useForm<FormDataType>({
-    resolver: zodResolver(baseFormSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      service: "",
-      message: "",
-      customFields: {}
-    }
-  });
-
+const ContactForm: React.FC<ContactFormProps> = ({ isSubmitting, form, onSubmit }) => {
   const watchedService = form.watch("service");
-  
-  const handleFormSubmit = (data: FormDataType) => {
-    onSubmit(data);
-  };
 
   return (
-    <form onSubmit={form.handleSubmit(handleFormSubmit)}>
+    <form onSubmit={form.handleSubmit(onSubmit)}>
       <div className="space-y-4">
         <div>
-          <label htmlFor="name" className="form-label">
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
             Nome Completo
           </label>
           <input
             type="text"
             id="name"
             {...form.register("name")}
-            className="form-input"
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-mk-orange bg-white dark:bg-gray-800 text-black dark:text-white"
             required
           />
           {form.formState.errors.name && (
-            <p className="form-error">{form.formState.errors.name.message}</p>
+            <p className="text-red-500 text-xs mt-1">{form.formState.errors.name.message}</p>
           )}
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label htmlFor="email" className="form-label">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
               Email
             </label>
             <input
               type="email"
               id="email"
               {...form.register("email")}
-              className="form-input"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-mk-orange bg-white dark:bg-gray-800 text-black dark:text-white"
               required
             />
             {form.formState.errors.email && (
-              <p className="form-error">{form.formState.errors.email.message}</p>
+              <p className="text-red-500 text-xs mt-1">{form.formState.errors.email.message}</p>
             )}
           </div>
           
           <div>
-            <label htmlFor="phone" className="form-label">
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
               Telefone
             </label>
             <input
               type="tel"
               id="phone"
               {...form.register("phone")}
-              className="form-input"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-mk-orange bg-white dark:bg-gray-800 text-black dark:text-white"
               required
             />
             {form.formState.errors.phone && (
-              <p className="form-error">{form.formState.errors.phone.message}</p>
+              <p className="text-red-500 text-xs mt-1">{form.formState.errors.phone.message}</p>
             )}
           </div>
         </div>
         
         <div>
-          <label htmlFor="service" className="form-label">
+          <label htmlFor="service" className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
             Serviço de Interesse
           </label>
           <select
             id="service"
             {...form.register("service")}
-            className="form-select"
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-mk-orange bg-white dark:bg-gray-800 text-black dark:text-white"
             required
           >
             <option value="">Selecione um serviço</option>
@@ -111,29 +85,26 @@ const ContactForm = ({ isSubmitting, onSubmit }: ContactFormProps) => {
             <option value="pos-producao">Pós-Produção</option>
           </select>
           {form.formState.errors.service && (
-            <p className="form-error">{form.formState.errors.service.message}</p>
+            <p className="text-red-500 text-xs mt-1">{form.formState.errors.service.message}</p>
           )}
         </div>
         
         {/* Dynamic Service-Specific Fields */}
-        <ServiceFields 
-          service={watchedService} 
-          form={form} 
-        />
+        <CustomServiceFields service={watchedService} form={form} />
         
         <div>
-          <label htmlFor="message" className="form-label">
+          <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
             Detalhes do Projeto
           </label>
           <textarea
             id="message"
             {...form.register("message")}
             rows={5}
-            className="form-input"
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-mk-orange bg-white dark:bg-gray-800 text-black dark:text-white"
             required
           ></textarea>
           {form.formState.errors.message && (
-            <p className="form-error">{form.formState.errors.message.message}</p>
+            <p className="text-red-500 text-xs mt-1">{form.formState.errors.message.message}</p>
           )}
         </div>
         

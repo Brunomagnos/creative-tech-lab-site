@@ -5,19 +5,11 @@ import { Link } from "react-router-dom";
 import { ClipboardList } from "lucide-react";
 import AppointmentScheduler from "../AppointmentScheduler";
 import ContactForm from "./ContactForm";
-import ContactInfo from "./ContactInfo";
+import ContactInfoSection from "./ContactInfoSection";
 import MessagePreview from "./MessagePreview";
-import { generateRequestCode } from "../../utils/serviceUtils";
+import { generateContactRequestCode } from "./utils";
 import { Button } from "../ui/button";
-
-export type FormDataType = {
-  name: string;
-  email: string;
-  phone: string;
-  service: string;
-  message: string;
-  customFields?: Record<string, string>;
-};
+import { FormDataType } from "./ContactTypes";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -31,7 +23,7 @@ const Contact = () => {
     setFormData(data);
     
     // Generate a unique request code
-    const newRequestCode = generateRequestCode();
+    const newRequestCode = generateContactRequestCode();
     setRequestCode(newRequestCode);
     
     // Create a preview of the formatted message
@@ -87,7 +79,7 @@ const Contact = () => {
           </div>
 
           <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <ContactInfo onScheduleClick={openScheduler} />
+            <ContactInfoSection onScheduleClick={openScheduler} />
             
             {/* Admin Link */}
             <div className="mt-6 bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700 shadow-md">
@@ -124,3 +116,4 @@ const Contact = () => {
 };
 
 export default Contact;
+export type { FormDataType };

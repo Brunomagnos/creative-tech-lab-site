@@ -2,7 +2,7 @@
 import { Check, Mail, Phone, Copy } from "lucide-react";
 import { Button } from "../ui/button";
 import { handleWhatsAppMessage } from "../WhatsAppButton";
-import { FormDataType } from "./index";
+import { FormDataType } from "./ContactTypes";
 import { toast } from "sonner";
 import { useState } from "react";
 

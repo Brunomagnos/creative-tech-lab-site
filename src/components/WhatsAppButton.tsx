@@ -2,7 +2,7 @@
 import React from "react";
 import { Phone } from "lucide-react";
 import { generateRequestCode } from "../utils/serviceUtils";
-import { FormDataType } from "./Contact/index";
+import { FormDataType } from "./Contact/ContactTypes";
 
 // This component will no longer render a floating button, but only provide utility functions
 const WhatsAppButton = () => {
