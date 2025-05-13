@@ -5,17 +5,14 @@ import { handleWhatsAppMessage } from "../WhatsAppButton";
 import { getServiceLabel } from "./utils";
 
 /**
- * Send message through WhatsApp and save the request
+ * Send message through WhatsApp
  */
-export const sendToWhatsApp = (formData: FormDataType, saveRequest: () => void) => {
+export const sendToWhatsApp = (formData: FormDataType) => {
   // Send the message through WhatsApp without closing the modal
   handleWhatsAppMessage(formData);
   
   // Show a success message
   toast.success("Chat do WhatsApp aberto em uma nova aba");
-  
-  // Save the request to localStorage
-  saveRequest();
 };
 
 /**

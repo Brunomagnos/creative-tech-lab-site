@@ -7,7 +7,8 @@ import { baseFormSchema, DynamicFormSchema, FormDataType } from "./Contact/Conta
 import ContactForm from "./Contact/ContactForm";
 import ContactInfoSection from "./Contact/ContactInfoSection";
 import MessagePreview from "./Contact/MessagePreview";
-import { generateContactRequestCode, saveRequestToStorage } from "./Contact/utils";
+import { generateContactRequestCode } from "./Contact/utils";
+import { saveRequest } from "./Contact/MessagePreviewUtils";
 import AdminLink from "./Contact/AdminLink";
 
 const Contact = () => {
@@ -42,17 +43,22 @@ const Contact = () => {
   };
 
   const handleConfirmSubmission = () => {
-    // Simulate API call
-    setTimeout(() => {
-      // Hide preview, show success toast
-      setShowPreview(false);
-      toast.success(`Pedido ${requestCode} enviado com sucesso! Entraremos em contato em breve.`);
+    if (formData && requestCode) {
+      // Save the request
+      saveRequest(formData, requestCode);
       
-      // Reset form
-      form.reset();
-      setFormData(null);
-      setIsSubmitting(false);
-    }, 1500);
+      // Simulate API call
+      setTimeout(() => {
+        // Hide preview, show success toast
+        setShowPreview(false);
+        toast.success(`Pedido ${requestCode} enviado com sucesso! Entraremos em contato em breve.`);
+        
+        // Reset form
+        form.reset();
+        setFormData(null);
+        setIsSubmitting(false);
+      }, 1500);
+    }
   };
 
   const openScheduler = () => {
@@ -99,10 +105,10 @@ const Contact = () => {
       </div>
 
       {/* Message Preview Modal */}
-      {showPreview && formData && (
+      {showPreview && formData && requestCode && (
         <MessagePreview
           formData={formData}
-          requestCode={requestCode || ''}
+          requestCode={requestCode}
           onClose={closePreview}
           onConfirm={handleConfirmSubmission}
         />

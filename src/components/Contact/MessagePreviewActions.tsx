@@ -2,19 +2,37 @@
 import { Button } from "../ui/button";
 import { Copy, Mail } from "lucide-react";
 import { FormDataType } from "./ContactTypes";
-import { sendToWhatsApp, copyRequestInfo, sendEmail } from "./MessagePreviewUtils";
+import { sendToWhatsApp, copyRequestInfo, sendEmail, saveRequest } from "./MessagePreviewUtils";
 
 interface MessagePreviewActionsProps {
   formData: FormDataType;
   requestCode: string;
-  saveRequest: () => void;
 }
 
-const MessagePreviewActions = ({ formData, requestCode, saveRequest }: MessagePreviewActionsProps) => {
+const MessagePreviewActions = ({ formData, requestCode }: MessagePreviewActionsProps) => {
+  // Create a wrapper function to save the request before performing other actions
+  const handleWhatsApp = () => {
+    // Save request and send to WhatsApp
+    saveRequest(formData, requestCode);
+    sendToWhatsApp(formData);
+  };
+
+  const handleCopyInfo = () => {
+    // Save request and copy information
+    saveRequest(formData, requestCode);
+    copyRequestInfo(formData, requestCode);
+  };
+
+  const handleSendEmail = () => {
+    // Save request and send email
+    saveRequest(formData, requestCode);
+    sendEmail(formData, requestCode);
+  };
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
       <Button
-        onClick={() => sendToWhatsApp(formData, saveRequest)}
+        onClick={handleWhatsApp}
         variant="outline"
         className="bg-[#25D366] hover:bg-[#20BA5C] text-white border-[#25D366] hover:border-[#20BA5C]"
       >
@@ -25,7 +43,7 @@ const MessagePreviewActions = ({ formData, requestCode, saveRequest }: MessagePr
       </Button>
       
       <Button
-        onClick={() => sendEmail(formData, requestCode)}
+        onClick={handleSendEmail}
         variant="outline"
         className="bg-blue-600 hover:bg-blue-700 text-white border-blue-600 hover:border-blue-700"
       >
@@ -34,7 +52,7 @@ const MessagePreviewActions = ({ formData, requestCode, saveRequest }: MessagePr
       </Button>
       
       <Button
-        onClick={() => copyRequestInfo(formData, requestCode)}
+        onClick={handleCopyInfo}
         variant="outline"
         className="bg-gray-600 hover:bg-gray-700 text-white border-gray-600 hover:border-gray-700"
       >

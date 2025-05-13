@@ -2,6 +2,8 @@
 import { Button } from "../ui/button";
 import { Check } from "lucide-react";
 import { useState } from "react";
+import { saveRequest } from "./MessagePreviewUtils";
+import { FormDataType } from "./ContactTypes";
 
 interface MessagePreviewFooterProps {
   onClose: () => void;

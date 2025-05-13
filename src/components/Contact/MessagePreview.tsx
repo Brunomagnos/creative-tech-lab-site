@@ -4,7 +4,6 @@ import { FormDataType } from "./ContactTypes";
 import MessagePreviewDetails from "./MessagePreviewDetails";
 import MessagePreviewActions from "./MessagePreviewActions";
 import MessagePreviewFooter from "./MessagePreviewFooter";
-import { saveRequest as saveRequestToStorage } from "./MessagePreviewUtils";
 
 interface MessagePreviewProps {
   formData: FormDataType;
@@ -14,22 +13,6 @@ interface MessagePreviewProps {
 }
 
 const MessagePreview = ({ formData, requestCode, onClose, onConfirm }: MessagePreviewProps) => {
-  const [isSending, setIsSending] = useState(false);
-
-  const saveRequest = () => {
-    saveRequestToStorage(formData, requestCode);
-  };
-
-  const handleConfirm = () => {
-    setIsSending(true);
-    
-    // Save the request first
-    saveRequest();
-    
-    // Call the original confirm function
-    onConfirm();
-  };
-
   return (
     <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
       <div className="bg-card text-card-foreground rounded-lg shadow-xl p-6 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
@@ -56,11 +39,10 @@ const MessagePreview = ({ formData, requestCode, onClose, onConfirm }: MessagePr
         <MessagePreviewActions 
           formData={formData} 
           requestCode={requestCode} 
-          saveRequest={saveRequest} 
         />
         
         {/* Footer buttons */}
-        <MessagePreviewFooter onClose={onClose} onConfirm={handleConfirm} />
+        <MessagePreviewFooter onClose={onClose} onConfirm={onConfirm} />
       </div>
     </div>
   );

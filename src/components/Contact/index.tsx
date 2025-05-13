@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,6 +9,7 @@ import ContactForm from "./ContactForm";
 import ContactInfoSection from "./ContactInfoSection";
 import MessagePreview from "./MessagePreview";
 import { generateContactRequestCode } from "./utils";
+import { saveRequest } from "./MessagePreviewUtils";
 import { Button } from "../ui/button";
 import { DynamicFormSchema, baseFormSchema, FormDataType } from "./ContactTypes";
 
@@ -45,17 +45,22 @@ const Contact = () => {
   };
 
   const handleConfirmSubmission = () => {
-    // Simulate API call
-    setTimeout(() => {
-      // Hide preview, show success toast
-      setShowPreview(false);
-      toast.success(`Pedido ${requestCode} enviado com sucesso! Entraremos em contato em breve.`);
+    if (formData && requestCode) {
+      // Save request
+      saveRequest(formData, requestCode);
       
-      // Reset form state
-      form.reset();
-      setFormData(null);
-      setIsSubmitting(false);
-    }, 1500);
+      // Simulate API call
+      setTimeout(() => {
+        // Hide preview, show success toast
+        setShowPreview(false);
+        toast.success(`Pedido ${requestCode} enviado com sucesso! Entraremos em contato em breve.`);
+        
+        // Reset form state
+        form.reset();
+        setFormData(null);
+        setIsSubmitting(false);
+      }, 1500);
+    }
   };
 
   const openScheduler = () => {
@@ -117,10 +122,10 @@ const Contact = () => {
       </div>
 
       {/* Message Preview Modal */}
-      {showPreview && formData && (
+      {showPreview && formData && requestCode && (
         <MessagePreview
           formData={formData}
-          requestCode={requestCode || ''}
+          requestCode={requestCode}
           onClose={closePreview}
           onConfirm={handleConfirmSubmission}
         />
