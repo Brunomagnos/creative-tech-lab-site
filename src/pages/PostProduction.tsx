@@ -2,7 +2,7 @@
 import { ArrowRight, Video, Wand2, Film, Headphones, Clapperboard, Palette } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import WhatsAppButton from "../components/WhatsAppButton";
+import Contact from "../components/Contact";
 import MetaTags from "../components/MetaTags";
 
 const PostProduction = () => {
@@ -186,8 +186,10 @@ const PostProduction = () => {
         </div>
       </section>
 
+      {/* Contact Section */}
+      <Contact />
+
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };
